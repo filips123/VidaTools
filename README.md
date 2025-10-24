@@ -12,4 +12,8 @@ Navodila:
 # Označevalec slik
 Ali si downloaal slike iz google photos (ali kje drugje) in bi jih zdaj rad uredil na računalniku? Brez skrbi! Ta prijezni program pikaže sliko in te vpraša, v katero mapo bi ga rad dal. Ko vpišeš `ntag`, te vpraša po imenu novega tega. To bo ustvarilo novo mapo v mapi map (glej `mapa_map` v kodi na vrhu in vstavi notri željeno pot) z istim imenom kot `ntag`. Ko vam program pokaže sliko, vi lahko vpišete ime tega ntaga in slika se bo prestavila v ciljno mapo. Če napišete le del besede, bo program dal v tisti ntag, ki vsebuje vpisan niz, če je tak ntag samo en, drugače pa ti napiše možnosti.
 
+Za delovanje potrebujete knjižnico `pillow` (`pip install pillow`).
+
+**Novo:** Ta prijazni program zdaj omogoča tudi nesramen način! Zaženite ga z argumentom `--nesramen` in ga preizkusite! Preizkusite lahko tudi ekstra prijazen način z argumentom `--prijazen`!
+
 Če kej ne razumete vprašite.

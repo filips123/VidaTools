@@ -1,14 +1,56 @@
 import os
-from PIL import Image 
-import shutil 
+import random
+import shutil
+import sys
 
-#absolutna pot
-# mapa_slik = os.path.join("C:", "Users", "vidam", "Desktop", "Alia", "google_slike")
-mapa_slik = r"C:\Users\vidam\Downloads\Photos-1-001(3)"
-# mapa_slik = r"C:\Users\vidam\Desktop\Alia\slike\videi"
-mapa_map = r"C:\Users\vidam\Desktop\Alia\slike"
-# os.path.join("C:", "Users", "vidam", "Desktop", "Alia", "slike")
-tags = []
+from PIL import Image
+
+
+if "--nisem-vida" in sys.argv:
+    mapa_slik = input("vnesi pot do mape z nesortiranimi slikami: ")
+    mapa_map = input("vnesi pot do mape z označenimi slikami: ")
+else:
+    # absolutna pot
+    # mapa_slik = os.path.join("C:", "Users", "vidam", "Desktop", "Alia", "google_slike")
+    mapa_slik = r"C:\Users\vidam\Downloads\Photos-1-001(3)"
+    # mapa_slik = r"C:\Users\vidam\Desktop\Alia\slike\videi"
+    mapa_map = r"C:\Users\vidam\Desktop\Alia\slike"
+    # os.path.join("C:", "Users", "vidam", "Desktop", "Alia", "slike")
+
+
+nesramen_nacin = True if "--nesramen" in sys.argv else False
+prijazen_nacin = True if "--prijazen" in sys.argv else False
+
+
+nesramni_stavki = [
+    "Kako slaba slika!",
+    "Slabše slike še nisem videl!",
+    "Še opica bi naredila boljšo sliko!",
+    "In ti misliš, da si fotograf?",
+    "Ne opletaj s telefonom!",
+    "Kaj je ta zmazek?",
+    "Ali vidim prst?",
+    "Abstraktna umetnost brez umetnosti :/",
+    "Kamera: 1, estetika: 0",
+    "Ubogi telefon!",
+    "Še dobro da obstaja fotošop!",
+    "Tudi fotošop tu ne bo pomagal!",
+    "Vaja ne dela mojstra!",
+]
+
+prijazni_stavki = [
+    "Mojstrovina!",
+    "Kako lepa slika!",
+    "Slikaš kot profesionalec!",
+    "Trenutek za zgodovino!",
+    "Barve življenja!",
+    "Kreativnost v akciji!",
+    "Fotografija z osebnostjo!",
+    "Ujeti trenutek popolnosti!",
+    "Kar tako naprej!",
+    "Čudovita kompozicija!"
+]
+
 
 tags = next(os.walk(mapa_map))[1]
 print(tags)
@@ -18,7 +60,7 @@ def dodaj(slika, tag):
     slika_pot = os.path.join(mapa_slik, slika)
     nova_pot = os.path.join(mapa_map, tag, slika)
     shutil.move(slika_pot, nova_pot)
-    
+
 def play_movie(path):
     from os import startfile
     startfile(path)
@@ -33,6 +75,10 @@ for slika in os.listdir(mapa_slik):
     #     play_movie(slika_pot)
     else:
         continue
+    if nesramen_nacin:
+        print(random.choice(nesramni_stavki))
+    if prijazen_nacin:
+        print(random.choice(prijazni_stavki))
     while True:
         print(tags)
         print(slika)
@@ -62,4 +108,4 @@ for slika in os.listdir(mapa_slik):
             else:
                 print("ni v tagih!, možnosti:", moznosti)
                 continue
-        break          
+        break
